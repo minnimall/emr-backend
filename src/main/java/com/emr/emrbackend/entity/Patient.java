@@ -15,6 +15,10 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;   // nullable ได้ ถ้าผู้ป่วยไม่มี account
+
     @Column(name = "hn_number", unique = true, nullable = false, length = 20)
     private String hnNumber;
 
